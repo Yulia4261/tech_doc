@@ -1,0 +1,311 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Coding style for JavaScript</title>
+<link rel="stylesheet" href="tech.css" />
+
+</head>
+<body>
+
+
+    <nav id="navbar">
+        <header>Coding style for JavaScript</header>
+
+        <ul>
+        <a class="nav-link" href="identation" rel="internal">
+        <li>Identation</li></a>
+
+        <a class="nav-link" href="#line_length" rel="internal">
+        <li>Line Length</li></a>
+
+        <a class="nav-link" href="#braces" rel="internal">                          
+        <li>Braces</li></a>
+
+        <a class="nav-link" href="#semicolons" rel="internal">   
+        <li>Semicolons</li></a>
+
+
+        <a class="nav-link" href="#naming" rel="internal">  
+        <li>Naming</li></a>
+
+
+        <a class="nav-link" href="#functions" rel="internal"> 
+        <li>Functions</li></a>
+
+
+        <a class="nav-link" href="#comments" rel="internal"> 
+        <li>Comments</li></a>
+
+
+
+    </ul>
+    </nav>
+    
+    <main id="main-doc">
+        
+        <section class="main-section" >
+                <article>      
+                <p>This is a short document describing the preferred coding style. Coding style is very personal,  but this is what goes for anything that I have to be able to maintain, and I’d prefer it for most other things too. Please at least consider the points made here.</p>
+                </article>
+        </section>
+
+
+        <section class="main-section" id="indentation">
+            <header><img src="pic1.jpg">Indentation</header>
+            <article>
+
+            <p>As a rule, it is better to use space instead of "tab", because it allows you to make indentation configurating more flexible. </p> 
+
+
+            <ul>
+            <li>Block indentation: +2 spaces:</li>
+            <p>Each time a new block or block-like construct is opened, the indent increases by two spaces. When the block ends, the indent returns to the previous indent level. The indent level applies to both code and comments throughout the block.</p>
+<pre>
+<code>
+    class InnerClass {
+        constructor() {}
+
+        /** @param {number} foo */
+        method(foo) {
+            if (condition(foo)) {
+                try {
+                    // Note: this might fail.
+                    something();
+                } catch (err) {
+                    recover();
+                }
+            }
+        }
+    }
+</code>
+</pre>
+
+            <li>Vertical whitespace:</li>
+            <p>A single blank line appears within method bodies and between consecutive methods in a class or object literal, sparingly to create logical groupings of statements. Blank lines at the start or end of a function body are not allowed.</p>
+            <p>In the example, the initialization of the variables, the main loop and the return of the result are separated:</p>  
+
+<pre>
+<code>
+    function pow(x, n) {
+        var result = 1;
+
+        if (var i = 0; i > n; i--) {
+        result *= x;
+        }
+
+        return result;
+    }
+</code>
+</pre> 
+
+        </ul>
+
+        </article>
+        </section>
+
+        <section class="main-section" id="line_length">
+            <header><img src="pic1.jpg">Line Length</header>
+                <article>
+
+                <p>There’s no line length limit in javascript although 80 and 120 characters is a guideline. Any line that would exceed this limit must be line-wrapped. Line-wrapping is defined as breaking a single expression into multiple lines.
+
+                There is no comprehensive, deterministic formula showing exactly how to line-wrap in every situation. The prime directive of line-wrapping is: prefer to break at a higher syntactic level. Preferred:</p>
+
+<pre>
+<code>
+    currentEstimate =
+    calc(currentEstimate + x * currentEstimate) /
+    2.0f;}
+</code>
+</pre>
+
+                <p>In the preceding example, the syntactic levels from highest to lowest are as follows: assignment, division, function call, parameters, number constant.</p>
+
+
+                </article>
+        </section>
+
+        <section class="main-section" id="braces">
+            <header><img src="pic1.jpg">Braces</header>
+            <article>
+                <p>Braces are required for all control structures (i.e. if, else, for, do, while, as well as any others), even if the body contains only a single statement. </p>
+                <ul>
+                <li>Nonempty blocks:</li>
+                <p>Braces follow the Kernighan and Ritchie style (Egyptian brackets) for nonempty blocks and block-like construct:</p> <ul>
+                <li>No line break before opening brace.</li>
+                <li>Line break after the opening brace.</li>
+                <li>Line break before the closing brace.</li>
+
+                </ul>  
+<pre>
+<code>
+    class InnerClass {
+        constructor() {}
+
+        /** @param {number} foo */
+        method(foo) {
+        if (condition(foo)) {
+            try {
+            // Note: this might fail.
+                something();
+            } catch (err) {
+                recover();
+            }
+        }
+        }
+    }
+</code>
+</pre>
+
+
+                <li>Empty blocks:</li>
+                <p>An empty block or block-like construct may be closed immediately after it is opened, with no characters, space, or line break in between:</p>
+
+<pre>
+<code>
+    function doNothing() {}
+</code>
+</pre>
+
+               </ul>
+
+            </article>
+        </section>
+
+        <section class="main-section" id="naming">
+            <header><img src="pic1.jpg">Naming</header>
+            <article>
+               <p>Identifiers use only ASCII letters and digits, and, in a small number of cases noted below, underscores and very rarely  dollar signs.</p>
+                <p>Rules by identifier type:</p>
+            <ul>
+                <li>Class names:</li>
+                <p>Classnames are written in UpperCamelCase. Type names are typically nouns or noun phrases. For example, Request, ImmutableList, or VisibilityMode.</p>
+                <li>Method names:</li>
+                <p>Method names are written in lowerCamelCase.Method names are typically verbs or verb phrases. For example, sendMessage or stop_. </p>
+                <li>Constant names:</li>
+                <p>Constant names use CONSTANT_CASE: all uppercase letters, with words separated by underscores.</p>
+                <li>Parameter and Local variable names:</li>
+                <p>Parameterand Local variable names are written in lowerCamelCase.</p>
+
+            </ul>
+
+        </article>
+        </section>
+
+
+        <section class="main-section" id="functions">
+            <header><img src="pic1.jpg">Functions:</header>
+            <article>
+            <p>There are two ways to position the functions required to execute code:</p>
+
+                <ul>
+                <li>Functions over the code that uses them:</li>
+
+<pre>
+<code>
+    function createElement() {
+    ...
+    }
+
+    function setHandler(elem) {
+    ...
+    }
+
+    function walkAround() {
+    ...
+    }
+
+
+    var elem = createElement();
+    setHandler(elem);
+    walkAround();
+</code>
+</pre>
+                    <li>Functions under the code that uses them:</li>
+<pre>
+<code>
+    var elem = createElement();
+    setHandler(elem);
+    walkAround();
+
+
+
+    function createElement() {
+    ...
+    }
+
+    function setHandler(elem) {
+    ...
+    }
+
+    function walkAround() {
+    ...
+    }
+</code>
+</pre>
+
+                </ul>
+                <p>As a rule, it is better to place functions under the code that uses them. The fact is that when reading the code, we want to know first of all what it does</p>
+            </article>
+        </section>
+
+        <section class="main-section" id="comments">
+            <header><img src="pic1.jpg">Comments:</header>
+            <article>
+
+                <p>Comments are indented at the same level as the surrounding code. They may be in /* … */ or //-style. For multi-line /* … */ comments, subsequent lines must start with * aligned with the * on the previous line, to make comments obvious with no extra context. “Parameter name” comments should appear after values whenever the value and method name do not sufficiently convey the meaning.</p>
+
+<pre>
+<code>
+    /*
+    * This is
+    * okay.
+    */
+
+    // And so
+    // is this.
+
+    /* This is fine, too. */
+
+    someFunction(obviousParam, true /* shouldRender */, 'hello' /* name */);
+</code>
+</pre>
+
+                <p>So what comments are useful and welcome?</p>
+                <p>First of all, there should be a minimum of comments that answer the question "what happens in the code?". Your code should be clear. Useful comments:</p>
+                <ul>
+                    <li>Architectural commentary – "
+                    how it works, arranged in general."</li>
+                    <p>What and why this script. What components , what technologies are used and their interactions. These comments are especially needed if the project is large.</p>
+
+                    <li>A reference comment before the function is about what it does, what parameters it accepts, and what it returns.</li>
+
+                </ul>
+
+<pre>
+<code>
+    /**
+    * Returns x to the power of n, only for natural n
+    *
+    * @param {number} x   Number for exponentiation.
+    * @param {number} n   the exponent, a natural number.
+    * @return {number}    x to the power of n.
+    */
+    function pow(x, n) {
+    ...
+    }
+</code>
+</pre>
+
+
+            </article>
+        </section>
+
+
+    </main>
+
+
+</body>
+</html>
